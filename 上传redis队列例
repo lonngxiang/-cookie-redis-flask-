@@ -1,0 +1,17 @@
+import json
+import redis
+
+r=redis.Redis(host="localhost", port=6379, db=0)
+# print(r.rpop.list1)
+print(r.hset('wait_task', 'one', json.dumps({'project': 'india', 'total_size': '15.8 MB'})))
+print(r.hset('cookiea', 'one', json.dumps({'M_WEIBOCN_PARAMS': 'luicode%3D20000174%26uhGeBG41IS9yzJzD2IHXVTawqkrDV6PUJbkdANLXP9kW1NQeU4K291O_rNtekPbnDD4fX1DA2fh59-', 'MLOGIN': '1', 'SCF': 'AowMGjoczPKEY_DNxRVFCVNaUYNl-oSD6_F9zkUFdX5dDz7ztTLTbO15eRpXuD9CjdXoBIx_SpPyBokct_ESIe4.', 'SUHB': '010GVgHeTcXzna', 'SSOLoginState': '1554257596', 'WEIBOCN_FROM': '1110006030', '_T_WM': '9dbb0859f672809a507af5fbc2fec205', 'XSRF-TOKEN': '66192b'})))
+print( r.hget("wait_task","one"))
+d= r.hget("wait_task","one")
+print(json.loads(d))
+k=json.loads(d)
+print(type(k))
+
+
+mmm="{'project': 'india', 'total_size': '15.8 MB'}"
+print(eval(mmm))
+print(type(eval(mmm)))
